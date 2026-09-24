@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anandi Joshi — College Admission Consultant</title>
+  <meta name="description" content="One-on-one college admission consulting for high school seniors and transfer students: school lists, essays, activities, and strategy.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232456f0'/%3E%3Ctext x='16' y='21.500' font-family='Arial' font-weight='700' font-size='14' text-anchor='middle' fill='white'%3EAJ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="Home">
+<svg class="brand-mark" viewBox="0 0 40 40" role="img" aria-label="Anandi Joshi logo"><rect width="40" height="40" rx="11" fill="var(--accent)"/><text x="20" y="27.500" font-family="'DM Serif Display', Georgia, serif" font-style="italic" font-size="19" text-anchor="middle" fill="#fff">Aj</text><circle cx="30.500" cy="9.500" r="2.300" fill="#fff"/></svg>
+      <span data-site="brand">Anandi Joshi</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-links">
+      <a href="about.html">About me</a>
+      <a href="#services">Services</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary" href="book.html">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero: photo left, text + buttons right -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="portrait-wrap reveal">
+        <div class="portrait">
+          <img src="images/anandi.jpg" alt="Anandi Joshi" width="1104" height="1481" onerror="this.remove()">
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <span class="hi">Hi! I'm</span>
+        <div class="name-row">
+          <h1>Anandi Joshi</h1>
+          <div class="edu-logos">
+            <img src="images/logos/berkeley-haas.jpg" alt="UC Berkeley, Haas School of Business" width="450" height="250">
+            <span class="edu-divider" aria-hidden="true"></span>
+            <img src="images/logos/harvard-business-school.jpg" alt="Harvard Business School" width="800" height="334">
+          </div>
+        </div>
+        <p class="role">College Admission Consultant</p>
+        <p class="tagline">I'm here to help you <em>apply to college!</em></p>
+        <div class="btn-grid">
+          <a class="btn btn-ghost" href="about.html">About me</a>
+          <a class="btn btn-ghost" href="testimonials.html">Student / Family Testimonials</a>
+          <a class="btn btn-ghost" href="#services">Services</a>
+          <a class="btn btn-primary wide" href="book.html">Book a consultation!</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="container">
+      <p class="strip-label">I've helped over 20 students get into:</p>
+      <video class="strip-video" autoplay muted loop playsinline preload="auto" aria-label="Logos of schools my students have been admitted to">
+        <source src="media/school-carousel.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- Services (content comes from data/services.js; edit it with admin.html) -->
+  <section class="section soft" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Services</span>
+        <h2>Pick The Support That Fits Where You Are</h2>
+        <p>Not sure which plan fits? Start with a 30-minute consulting call and we'll choose together. Every package includes one-on-one video sessions.</p>
+      </div>
+      <div data-render="consult"></div>
+      <div class="plans" data-render="packages" style="margin-top:32px"></div>
+      <div data-render="essay"></div>
+      <p class="services-note">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8.250"/><path d="M10 9v5M10 6.500v.01"/></svg>
+        Applying as a transfer student? These work for you too!
+      </p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section soft" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Student &amp; family testimonials</span>
+        <h2>What Students And Families Say</h2>
+      </div>
+      <div class="tgrid" data-render="testimonials-full"></div>
+
+      <div class="section-head">
+        <span class="eyebrow">The difference</span>
+        <h2>Why Parents Choose Me</h2>
+        <p>Most college admissions companies run every student through the same standardized playbook. Here's what's different about working with a current student instead.</p>
+      </div>
+      <div class="diff-grid">
+        <div class="diff-card reveal">
+          <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.500-7 10-7 10 7 10 7-3.500 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>The Student Perspective</h3>
+          <p>Having been through this process recently and currently attending the #1 Public University in the U.S., as well as helping students across the nation gain admission to T10 universities, I know what admissions officers actually care about this year, not five years ago.</p>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.500"/><circle cx="18" cy="6" r="2.500"/><circle cx="12" cy="18" r="2.500"/><path d="m7.900 7.500 3 8.500m5.200-8.500-3 8.500M8.500 6h7"/></svg></div>
+          <h3>An Expansive Student Network</h3>
+          <p>Direct connections with current students across UC, Ivy League, and top private schools give your application insight a standardized program can't offer.</p>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+          <h3>Strategy That Stays Current</h3>
+          <p>Big admissions companies rely on the same generic templates for every student. I take a different approach, tailoring every application to what’s actually competitive today through unique resources, strategies, and personalized guidance. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Guidance From the Start, Support Throughout:</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Book a consulting call</h3><p>Choose a time for a 30-minute video call and check out securely. It takes about a minute.</p></div>
+        <div class="step reveal"><h3>Talk it through</h3><p>We'll go over your goals, your timeline, and which package (or essay review) makes sense for you.</p></div>
+        <div class="step reveal"><h3>Get started</h3><p>If we're a good fit, I'll send next steps. Then we draft, refine, and get every piece of your application ready to submit.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ, with the booking CTA alongside it instead of in a separate band below -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Good Questions</h2>
+      </div>
+      <div class="faq-layout">
+        <div class="faq">
+          <details><summary>When should I start?</summary><p>The earlier the better. Many students begin the summer before senior year, but I work with students at every stage, including the last few weeks before a deadline.</p></details>
+          <details><summary>Do you work with transfer students?</summary><p>Yes. I transferred to Berkeley from community college myself, so I can help with transfer applications as well as freshman applications.</p></details>
+          <details><summary>Why do I book a call first?</summary><p>So we can talk through your goals, see if we’re a good fit, and determine whether my resources and approach would be helpful for you.</p></details>
+          <details><summary>How do I sign up for a package?</summary><p>After our call, if we determine it's a good fit to work together, I'll send you a secure payment invoice.</p></details>
+          <details><summary>How does essay review work?</summary><p>Each week, we’ll have a 1-hour 1-on-1 video call to discuss your application, brainstorm ideas, and work through revisions together. Once you submit your revisions, I’ll provide detailed written feedback within 48 hours. Each week includes one revision round to keep the process focused and intentional.</p></details>
+          <details><summary>Do you guarantee admission?</summary><p>No. Nobody honestly can. What I can promise is a clear strategy, honest feedback, and an application that represents you well.</p></details>
+          <details><summary>What if I need to reschedule?</summary><p>Life happens. You can reschedule from your calendar invite. Please give at least 24 hours' notice when you can.</p></details>
+        </div>
+        <div class="cta faq-cta reveal">
+          <h2>Ready To Get Started?</h2>
+          <p>Book a call and we'll map out your next steps together.</p>
+          <a class="btn btn-primary" href="book.html">Book a call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 40 40" role="img" aria-label="Anandi Joshi logo"><rect width="40" height="40" rx="11" fill="var(--accent)"/><text x="20" y="27.500" font-family="'DM Serif Display', Georgia, serif" font-style="italic" font-size="19" text-anchor="middle" fill="#fff">Aj</text><circle cx="30.500" cy="9.500" r="2.300" fill="#fff"/></svg><span data-site="brand">Anandi Joshi</span></a>
+        <p style="margin-top:10px;color:var(--muted);font-size:15px"><a data-site-href="email" data-site="email" href="#">hello@example.com</a></p>
+      </div>
+      <nav>
+        <a href="about.html">About me</a><a href="index.html#services">Services</a><a href="testimonials.html">Testimonials</a><a href="index.html#how">How it works</a><a href="index.html#faq">FAQ</a><a href="book.html">Book a call</a>
+      </nav>
+    </div>
+    <p class="fine">© <span data-site="year">2026</span> <span data-site="brand">Anandi Joshi</span>. Payments are processed securely by Stripe. Counseling services do not guarantee admission to any institution.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="data/services.js"></script>
+<script src="data/testimonials.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

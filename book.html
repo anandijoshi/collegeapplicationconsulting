@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a call — Anandi Joshi</title>
+  <meta name="description" content="Book a 30-minute consulting call with Anandi Joshi to talk through your college application goals.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232456f0'/%3E%3Ctext x='16' y='21.500' font-family='Arial' font-weight='700' font-size='14' text-anchor='middle' fill='white'%3EAJ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="Home">
+<svg class="brand-mark" viewBox="0 0 40 40" role="img" aria-label="Anandi Joshi logo"><rect width="40" height="40" rx="11" fill="var(--accent)"/><text x="20" y="27.500" font-family="'DM Serif Display', Georgia, serif" font-style="italic" font-size="19" text-anchor="middle" fill="#fff">Aj</text><circle cx="30.500" cy="9.500" r="2.300" fill="#fff"/></svg>
+      <span data-site="brand">Anandi Joshi</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-links">
+      <a href="about.html">About me</a>
+      <a href="index.html#services">Services</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="booking-root">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Book a consultation</span>
+      <h1>Book A 30-Minute Call</h1>
+      <p>Let's talk about your goals and find the right plan for you. If we're a good fit, I'll send next steps to get started after the call.</p>
+      <ol class="stepper" id="stepper">
+        <li data-step="1"><b>1</b>Book &amp; pay</li>
+        <li data-step="2"><b>2</b>Pick a time</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- State: before payment (Stripe) -->
+  <section class="section" style="padding-top:24px" data-state="choose">
+    <div class="container" style="max-width:960px">
+      <div data-render="consult-pay"></div>
+    </div>
+  </section>
+
+  <!-- State: calendar (after Stripe, or straight away when Google Calendar takes the payment) -->
+  <section class="section" style="padding-top:24px" data-state="calendar" hidden>
+    <div class="container">
+      <div class="notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12.500 3 3 5-6"/></svg>
+        <div><strong id="notice-title">Pick a time for your call</strong><span id="notice-body"></span></div>
+      </div>
+      <div class="calendar-wrap" id="calendar"></div>
+      <a class="subtle-link" id="calendar-open" href="#" target="_blank" rel="noopener" hidden>Calendar not loading? Open it in a new tab →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 40 40" role="img" aria-label="Anandi Joshi logo"><rect width="40" height="40" rx="11" fill="var(--accent)"/><text x="20" y="27.500" font-family="'DM Serif Display', Georgia, serif" font-style="italic" font-size="19" text-anchor="middle" fill="#fff">Aj</text><circle cx="30.500" cy="9.500" r="2.300" fill="#fff"/></svg><span data-site="brand">Anandi Joshi</span></a>
+      <p style="color:var(--muted);font-size:15px">Questions? <a data-site-href="email" data-site="email" href="#">hello@example.com</a></p>
+    </div>
+    <p class="fine">© <span data-site="year">2026</span> <span data-site="brand">Anandi Joshi</span>. Payments are processed securely by Stripe. Counseling services do not guarantee admission to any institution.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="data/services.js"></script>
+<script src="data/testimonials.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

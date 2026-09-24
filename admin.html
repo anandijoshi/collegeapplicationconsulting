@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Edit services — Anandi Joshi</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232456f0'/%3E%3Ctext x='16' y='21.500' font-family='Arial' font-weight='700' font-size='14' text-anchor='middle' fill='white'%3EAJ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { background: var(--soft); }
+    .bar { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid var(--line); }
+    .bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 14px 0; }
+    .bar h1 { font-size: 1.25rem; }
+    .bar-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .status { font-size: 13.5px; color: var(--muted); }
+    .status.dirty { color: var(--accent-dark); font-weight: 600; }
+    .how { margin: 28px 0 8px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; }
+    .how ol { display: grid; gap: 6px; padding-left: 20px; list-style: decimal; color: var(--ink-2); font-size: 15.5px; }
+    .how b { color: var(--ink); }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 32px; align-items: start; padding: 20px 0 80px; }
+    .col-h { font: 600 13px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 8px 0 14px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; margin-bottom: 18px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+    .card-top h2 { font-size: 1.15rem; }
+    .icon-btns { display: flex; gap: 6px; }
+    .ib { border: 1px solid var(--line); background: #fff; border-radius: 10px; width: 34px; height: 34px; cursor: pointer; font-size: 15px; color: var(--ink-2); }
+    .ib:hover:not(:disabled) { background: var(--tint); border-color: var(--accent); color: var(--accent); }
+    .ib:disabled { opacity: .35; cursor: default; }
+    .ib.danger:hover:not(:disabled) { background: #fdecec; border-color: #d13b3b; color: #d13b3b; }
+    .grid2 { display: grid; grid-template-columns: 1fr 140px; gap: 14px; }
+    label.f { display: block; margin-bottom: 14px; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+    label.f small { font-weight: 400; color: var(--muted); }
+    label.f input[type=text], label.f input[type=number], label.f input[type=url], label.f textarea {
+      display: block; width: 100%; margin-top: 6px; padding: 11px 13px; font: 400 15px/1.4 var(--body); color: var(--ink);
+      border: 1px solid var(--line); border-radius: 10px; background: #fff;
+    }
+    label.f textarea { min-height: 128px; resize: vertical; }
+    label.f input:focus, label.f textarea:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+    .chk { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; margin: 2px 0 14px; cursor: pointer; }
+    .chk input { width: 18px; height: 18px; accent-color: var(--accent); }
+    .hint { font-size: 12.5px; color: var(--muted); background: var(--soft); border-radius: 10px; padding: 9px 12px; word-break: break-all; }
+    .hint code { font-size: 12.5px; color: var(--ink); }
+    .add { width: 100%; border: 2px dashed var(--tint-2); background: transparent; color: var(--accent); font: 600 15px/1 var(--body); padding: 18px; border-radius: 16px; cursor: pointer; margin-bottom: 26px; }
+    .add:hover { background: var(--tint); }
+    .preview-col { position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow: auto; padding-right: 4px; }
+    .preview { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+    .preview .plans { grid-template-columns: 1fr; gap: 26px; }
+    .preview .plan { padding: 26px 22px 22px; }
+    .preview .plan:hover { transform: none; box-shadow: none; }
+    .preview .carte { grid-template-columns: 1fr; gap: 22px; margin-top: 26px; padding: 26px 22px; }
+    .preview .carte .feat { grid-template-columns: 1fr; }
+    @media (max-width: 1100px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-height: none; } }
+    @media (max-width: 560px) { .grid2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="container bar-inner">
+    <div>
+      <h1>Edit services &amp; pricing</h1>
+      <span class="status" id="status">No changes yet</span>
+    </div>
+    <div class="bar-actions">
+      <a class="btn btn-ghost btn-sm" href="index.html#services">View site</a>
+      <button class="btn btn-ghost btn-sm" id="reset" type="button">Reset</button>
+      <button class="btn btn-ghost btn-sm" id="copy" type="button">Copy code</button>
+      <button class="btn btn-primary btn-sm" id="download" type="button">Download services.js</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="how">
+    <ol>
+      <li><b>Edit</b> anything below. The preview updates as you type, and your draft is saved in this browser.</li>
+      <li>Click <b>Download services.js</b>. (The Stripe and Google Calendar links for the $50 call live in <b>js/config.js</b>, not here.)</li>
+      <li>Put that file in your site's <b>data</b> folder (replace the old one) and re-upload or redeploy the site. Visitors see the update after that.</li>
+    </ol>
+  </div>
+
+  <div class="layout">
+    <div>
+      <div class="col-h">Start here: consulting call</div>
+      <div class="card" id="consult"></div>
+
+      <div class="col-h">Packages</div>
+      <div id="packages"></div>
+      <button class="add" id="add" type="button">+ Add a package</button>
+
+      <div class="col-h">À la carte essay review</div>
+      <div class="card" id="essay"></div>
+    </div>
+
+    <div class="preview-col">
+      <div class="col-h">Live preview</div>
+      <div class="preview">
+        <div id="pv-consult"></div>
+        <div class="plans" id="pv-plans" style="margin-top:26px"></div>
+        <div id="pv-essay"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="data/services.js"></script>
+<script src="js/render.js"></script>
+<script>
+(function () {
+  const R = window.Render;
+  const DRAFT_KEY = "aj-services-draft";
+  const $ = (s) => document.querySelector(s);
+  const clone = (o) => JSON.parse(JSON.stringify(o));
+  const store = {
+    get() { try { return localStorage.getItem(DRAFT_KEY); } catch (e) { return null; } },
+    set(v) { try { localStorage.setItem(DRAFT_KEY, v); } catch (e) {} },
+    del() { try { localStorage.removeItem(DRAFT_KEY); } catch (e) {} },
+  };
+
+  let state = clone(window.SERVICES);
+  const draft = store.get();
+  if (draft) {
+    try {
+      const d = JSON.parse(draft);
+      if (d && d.consult && Array.isArray(d.packages) && d.essay) { state = d; setStatus("Draft restored from this browser", true); }
+      else store.del();
+    } catch (e) {}
+  }
+
+  function setStatus(msg, dirty) {
+    const el = $("#status");
+    el.textContent = msg;
+    el.classList.toggle("dirty", !!dirty);
+  }
+
+  const slug = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "package";
+  const uniqueId = (base) => {
+    let id = base, n = 2;
+    while (state.packages.some((p) => p.id === id)) id = base + "-" + n++;
+    return id;
+  };
+
+  /* ---------- Editor ---------- */
+  const esc = R.esc;
+  function packageCard(p, i, n) {
+    return `
+      <div class="card" data-i="${i}">
+        <div class="card-top">
+          <h2>${esc(p.name) || "Untitled package"}</h2>
+          <div class="icon-btns">
+            <button class="ib" data-act="up" title="Move up" ${i === 0 ? "disabled" : ""}>↑</button>
+            <button class="ib" data-act="down" title="Move down" ${i === n - 1 ? "disabled" : ""}>↓</button>
+            <button class="ib danger" data-act="del" title="Delete package">✕</button>
+          </div>
+        </div>
+        <div class="grid2">
+          <label class="f">Package name<input type="text" data-f="name" value="${esc(p.name)}"></label>
+          <label class="f">Price (USD)<input type="number" min="0" step="1" data-f="price" value="${esc(p.price)}"></label>
+        </div>
+        <label class="f">Short description<input type="text" data-f="tagline" value="${esc(p.tagline)}"></label>
+        <label class="f">What's included <small>(one item per line)</small><textarea data-f="features">${esc((p.features || []).join("\n"))}</textarea></label>
+        <label class="chk"><input type="checkbox" data-f="featured" ${p.featured ? "checked" : ""}> Highlight as “Most Common”</label>
+      </div>`;
+  }
+
+  function essayForm(e) {
+    return `
+      <label class="f">Name <small>(the heading shown on the card)</small><input type="text" data-e="name" value="${esc(e.name || "")}" placeholder="Essay Review"></label>
+      <div class="grid2">
+        <label class="f">Description<input type="text" data-e="tagline" value="${esc(e.tagline)}"></label>
+        <label class="f">Price (USD)<input type="number" min="0" step="1" data-e="price" value="${esc(e.price)}"></label>
+      </div>
+      <label class="f">Price label <small>(e.g. “per essay”)</small><input type="text" data-e="unit" value="${esc(e.unit)}"></label>
+      <label class="f">What's included <small>(one item per line)</small><textarea data-e="features">${esc((e.features || []).join("\n"))}</textarea></label>`;
+  }
+
+  function consultForm(c) {
+    return `
+      <div class="grid2">
+        <label class="f">Name<input type="text" data-c="name" value="${esc(c.name)}"></label>
+        <label class="f">Price (USD)<input type="number" min="0" step="1" data-c="price" value="${esc(c.price)}"></label>
+      </div>
+      <label class="f">Price label <small>(e.g. “per 30-minute call”)</small><input type="text" data-c="unit" value="${esc(c.unit)}"></label>
+      <label class="f">Description<input type="text" data-c="tagline" value="${esc(c.tagline)}"></label>
+      <label class="f">What's included <small>(one item per line)</small><textarea data-c="features">${esc((c.features || []).join("\n"))}</textarea></label>
+      <div class="hint">If you change this price, also update the price on your Stripe Payment Link (or Google Calendar appointment schedule) so they match.</div>`;
+  }
+
+  function renderEditor() {
+    const n = state.packages.length;
+    $("#packages").innerHTML = state.packages.map((p, i) => packageCard(p, i, n)).join("");
+    $("#essay").innerHTML = essayForm(state.essay);
+    $("#consult").innerHTML = consultForm(state.consult);
+  }
+
+  function renderPreview() {
+    $("#pv-plans").innerHTML = R.plans(state.packages);
+    $("#pv-essay").innerHTML = R.essay(state.essay);
+    $("#pv-consult").innerHTML = R.consult(state.consult);
+  }
+
+  function changed() {
+    renderPreview();
+    store.set(JSON.stringify(state));
+    setStatus("Unsaved changes. Download services.js to publish.", true);
+  }
+
+  const lines = (v) => v.split("\n").map((s) => s.trim()).filter(Boolean);
+
+  document.addEventListener("input", (ev) => {
+    const t = ev.target;
+    const card = t.closest("[data-i]");
+    if (card && t.dataset.f) {
+      const p = state.packages[+card.dataset.i];
+      const f = t.dataset.f;
+      if (f === "features") p.features = lines(t.value);
+      else if (f === "price") p.price = Math.max(0, Number(t.value) || 0);
+      else if (f === "featured") {
+        state.packages.forEach((q) => (q.featured = false));
+        p.featured = t.checked;
+        renderEditor();
+      } else {
+        p[f] = t.value;
+        if (f === "name") { const h = card.querySelector(".card-top h2"); if (h) h.textContent = t.value || "Untitled package"; }
+      }
+      changed();
+    } else if (t.dataset.c) {
+      const f = t.dataset.c;
+      if (f === "features") state.consult.features = lines(t.value);
+      else if (f === "price") state.consult.price = Math.max(0, Number(t.value) || 0);
+      else state.consult[f] = t.value;
+      changed();
+    } else if (t.dataset.e) {
+      const f = t.dataset.e;
+      if (f === "features") state.essay.features = lines(t.value);
+      else if (f === "price") state.essay.price = Math.max(0, Number(t.value) || 0);
+      else state.essay[f] = t.value;
+      changed();
+    }
+  });
+
+  document.addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-act]");
+    if (b) {
+      const i = +b.closest("[data-i]").dataset.i;
+      const list = state.packages;
+      if (b.dataset.act === "up" && i > 0) [list[i - 1], list[i]] = [list[i], list[i - 1]];
+      if (b.dataset.act === "down" && i < list.length - 1) [list[i + 1], list[i]] = [list[i], list[i + 1]];
+      if (b.dataset.act === "del") {
+        if (!confirm(`Delete “${list[i].name || "this package"}”?`)) return;
+        list.splice(i, 1);
+      }
+      renderEditor(); changed();
+      return;
+    }
+    if (ev.target.closest(".preview a")) ev.preventDefault();
+  });
+
+  $("#add").addEventListener("click", () => {
+    state.packages.push({
+      id: uniqueId("new-package"), name: "New package", price: 500, tagline: "Describe who this package is for.",
+      featured: false, features: ["First thing that's included", "Second thing that's included"],
+    });
+    renderEditor(); changed();
+    const cards = document.querySelectorAll("#packages .card");
+    cards[cards.length - 1].scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  /* ---------- Output ---------- */
+  const output = () =>
+    "/* Services & pricing. Easiest way to change this: open admin.html in your browser,\n" +
+    "   edit, click \"Download services.js\", and replace this file with the download. */\n" +
+    "window.SERVICES = " + JSON.stringify(state, null, 2) + ";\n";
+
+  $("#download").addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([output()], { type: "text/javascript" }));
+    const a = Object.assign(document.createElement("a"), { href: url, download: "services.js" });
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setStatus("Downloaded. Replace data/services.js in your site with it.", false);
+  });
+
+  $("#copy").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(output()); setStatus("Code copied. Paste it into data/services.js.", false); }
+    catch (e) { setStatus("Couldn't copy automatically. Use Download instead.", true); }
+  });
+
+  $("#reset").addEventListener("click", () => {
+    if (!confirm("Discard your edits and go back to the version currently on the site?")) return;
+    store.del();
+    state = clone(window.SERVICES);
+    renderEditor(); renderPreview();
+    setStatus("Reset to the live version", false);
+  });
+
+  renderEditor();
+  renderPreview();
+})();
+</script>
+</body>
+</html>

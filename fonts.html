@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Font pairing options — Anandi Joshi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@400;500;600&family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&family=Instrument+Serif&family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#0f1b3d; --muted:#5a6485; --line:#e3e8f4; --accent:#2456f0; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:#fff; color:var(--ink); font:16px/1.6 "Inter", system-ui, sans-serif; }
+    .wrap { width:min(1160px, 100% - 40px); margin:0 auto; padding:48px 0 80px; }
+    h1 { font:600 2rem/1.15 "Inter"; margin:0 0 8px; letter-spacing:-.01em; }
+    .lead { color:var(--muted); max-width:640px; margin:0 0 36px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:20px; }
+    .card { border:1px solid var(--line); border-radius:12px; padding:28px; display:flex; flex-direction:column; gap:14px; }
+    .meta { display:flex; justify-content:space-between; gap:12px; font:600 12px/1.3 "Inter"; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); padding-bottom:14px; border-bottom:1px solid var(--line); }
+    .meta span:last-child { color:var(--muted); letter-spacing:.04em; text-transform:none; font-weight:500; }
+    .hi { font-family:var(--h); font-style:italic; font-weight:var(--hw); font-size:1.4rem; color:var(--accent); line-height:1; }
+    .nm { font-family:var(--h); font-weight:var(--hw); font-size:2.7rem; line-height:1; letter-spacing:-.02em; margin-top:-6px; }
+    .role { font-family:var(--b); font-weight:500; font-size:1.05rem; color:#27345a; }
+    .tag { font-family:var(--h); font-weight:var(--hw); font-size:1.5rem; line-height:1.2; letter-spacing:-.01em; margin-top:6px; }
+    .tag em { color:var(--accent); }
+    .body { font-family:var(--b); color:var(--muted); margin:0; }
+    .row { display:flex; align-items:center; gap:18px; margin-top:auto; padding-top:8px; }
+    .price { font-family:var(--h); font-weight:var(--hw); font-size:2.2rem; line-height:1; letter-spacing:-.02em; }
+    .btn { font-family:var(--b); font-weight:600; font-size:15px; background:var(--accent); color:#fff; padding:12px 18px; border-radius:10px; }
+    .note { margin-top:36px; padding:18px 22px; background:#f6f7f9; border-radius:12px; color:var(--muted); max-width:720px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Font pairing options</h1>
+  <p class="lead">Each card shows the same content in a different heading + body pairing. The heading font is used for your name, section titles and prices; the body font for everything else. Tell me the number you like and I'll apply it across the whole site.</p>
+  <div class="grid" id="grid"></div>
+  <p class="note">Currently on the site: option 1 (Fraunces + Inter). All of these are free Google Fonts, so there's nothing to buy or install.</p>
+</div>
+<script>
+  const options = [
+    { h:"Fraunces", hw:500, b:"Inter", vibe:"Editorial, warm (current)" },
+    { h:"Playfair Display", hw:600, b:"Source Sans 3", vibe:"Classic, academic" },
+    { h:"DM Serif Display", hw:400, b:"DM Sans", vibe:"Confident, high contrast" },
+    { h:"Instrument Serif", hw:400, b:"Instrument Sans", vibe:"Modern, light, refined" },
+    { h:"Newsreader", hw:500, b:"Public Sans", vibe:"Bookish, understated" },
+    { h:"Space Grotesk", hw:600, b:"Inter", vibe:"All sans, close to your Canva look" },
+  ];
+  document.getElementById("grid").innerHTML = options.map((o, i) => `
+    <article class="card" style="--h:'${o.h}',serif; --hw:${o.hw}; --b:'${o.b}',sans-serif">
+      <div class="meta"><span>Option ${i + 1} · ${o.h} + ${o.b}</span><span>${o.vibe}</span></div>
+      <div class="hi">Hi! I'm</div>
+      <div class="nm">Anandi Joshi</div>
+      <div class="role">College Admission Consultant</div>
+      <div class="tag">I'm here to help you <em>apply to college!</em></div>
+      <p class="body">Personal, one-on-one guidance through every part of the process: building your school list, shaping your essays, and submitting with confidence.</p>
+      <div class="row"><span class="price">$3,000</span><span class="btn">Book a consultation</span></div>
+    </article>`).join("");
+</script>
+</body>
+</html>
